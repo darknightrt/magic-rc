@@ -13,7 +13,8 @@ export interface ResumeTemplate {
     | "timeline"
     | "classic-vertical"
     | "gray-split"
-    | "popular-columns";
+    | "popular-columns"
+    | "demo-three";
   colorScheme: {
     primary: string;
     secondary: string;
