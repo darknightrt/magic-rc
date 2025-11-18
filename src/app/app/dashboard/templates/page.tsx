@@ -33,7 +33,13 @@ const templateImages: Record<string, StaticImageData> = {
   "demo-three": demoThree,
 };
 
-
+const translationKeyMap: Record<string, string> = {
+  "left-right": "leftRight",
+  "classic-vertical": "classicVertical",
+  "gray-split": "graySplit",
+  "popular-columns": "popularColumns",
+  "demo-three": "demoThree",
+};
 
 const container = {
   hidden: { opacity: 0 },
