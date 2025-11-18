@@ -164,6 +164,26 @@ export const DEFAULT_TEMPLATES: ResumeTemplate[] = [
     basic: {
       layout: "center"
     }
+  {
+    id: "demo-three",
+    name: "热门个人模版",
+    description: "顶部渐变色横条 + 双列内容，突出主题色和自定义差异",
+    thumbnail: "demoThree",
+    layout: "demo-three",
+    colorScheme: {
+      primary: "#2563eb",
+      secondary: "#0ea5e9",
+      background: "#f5f6fb",
+      text: "#0f172a"
+    },
+    spacing: {
+      sectionGap: 28,
+      itemGap: 18,
+      contentPadding: 32
+    },
+    basic: {
+      layout: "center"
+    }
   }
 ];
 
