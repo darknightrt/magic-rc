@@ -14,7 +14,6 @@ import ProjectSection from "@/components/preview/ProjectSection";
 import SkillSection from "@/components/preview/SkillPanel";
 import CustomSection from "@/components/preview/CustomSection";
 import GithubContribution from "@/components/shared/GithubContribution";
-import { cn } from "@/lib/utils";
 
 interface DemoThreeTemplateProps {
   data: ResumeData;
@@ -54,25 +53,6 @@ const DemoThreeTemplate: React.FC<DemoThreeTemplateProps> = ({
       secondarySections.push(section);
     }
   });
-
-  const MAX_SECONDARY_FIRST_PAGE = 2;
-  const firstPageSecondarySections = secondarySections.slice(
-    0,
-    MAX_SECONDARY_FIRST_PAGE
-  );
-  const overflowSecondarySections = secondarySections.slice(
-    MAX_SECONDARY_FIRST_PAGE
-  );
-
-  const chunkSections = (sections: MenuSection[], chunkSize = 4) => {
-    const chunks: MenuSection[][] = [];
-    for (let i = 0; i < sections.length; i += chunkSize) {
-      chunks.push(sections.slice(i, i + chunkSize));
-    }
-    return chunks;
-  };
-
-  const additionalPages = chunkSections(overflowSecondarySections);
 
   const sharedSectionSettings: GlobalSettings = {
     ...data.globalSettings,
@@ -195,13 +175,7 @@ const DemoThreeTemplate: React.FC<DemoThreeTemplateProps> = ({
     }
   };
 
-  const SectionBlock = ({
-    section,
-    compact = false,
-  }: {
-    section: MenuSection;
-    compact?: boolean;
-  }) => {
+  const SectionBlock = ({ section }: { section: MenuSection }) => {
     const sectionTitle =
       data.menuSections.find((item) => item.id === section.id)?.title ||
       section.id;
@@ -209,10 +183,10 @@ const DemoThreeTemplate: React.FC<DemoThreeTemplateProps> = ({
     return (
       <div
         key={section.id}
-        className={cn("space-y-4 pb-6", compact && "space-y-3 pb-4")}
+        className="space-y-4 pb-6"
         style={{
           borderBottom: "1px solid rgba(0,0,0,0.05)",
-          marginBottom: `${compact ? sectionSpacing / 1.5 : sectionSpacing}px`,
+          marginBottom: `${sectionSpacing}px`,
         }}
       >
         <div className="flex items-center gap-3">
@@ -230,9 +204,7 @@ const DemoThreeTemplate: React.FC<DemoThreeTemplateProps> = ({
             {sectionTitle}
           </h3>
         </div>
-        <div className={cn("pl-4", compact && "pl-3")}>
-          {renderSectionContent(section.id)}
-        </div>
+        <div className="pl-4">{renderSectionContent(section.id)}</div>
       </div>
     );
   };
@@ -345,7 +317,7 @@ const DemoThreeTemplate: React.FC<DemoThreeTemplateProps> = ({
               </div>
 
               <div className="border-t border-gray-100 pt-8 lg:border-t-0 lg:border-l lg:pl-8">
-                {firstPageSecondarySections.map((section) => (
+                {secondarySections.map((section) => (
                   <SectionBlock key={section.id} section={section} />
                 ))}
 
@@ -378,37 +350,6 @@ const DemoThreeTemplate: React.FC<DemoThreeTemplateProps> = ({
                 )}
               </div>
             </div>
-
-            {additionalPages.length > 0 && (
-              <div className="mt-12 space-y-12">
-                {additionalPages.map((pageSections, index) => (
-                  <div
-                    key={`demo-three-extra-page-${index}`}
-                    className="pt-10 border-t border-dashed border-gray-200"
-                    style={{ breakBefore: "page" }}
-                  >
-                    <div className="mb-8 flex items-center gap-4">
-                      <span
-                        className="inline-flex h-2 w-10 rounded-full"
-                        style={{ backgroundColor: accentColor }}
-                      />
-                      <span className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-400">
-                        Page {index + 2}
-                      </span>
-                    </div>
-                    <div className="grid gap-8 md:grid-cols-2">
-                      {pageSections.map((section) => (
-                        <SectionBlock
-                          key={`${section.id}-extra-${index}`}
-                          section={section}
-                          compact
-                        />
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>
