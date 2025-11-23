@@ -12,7 +12,6 @@ export interface ResumeTemplate {
     | "professional"
     | "timeline"
     | "classic-vertical"
-    | "gray-split"
     | "popular-columns"
     | "demo-three";
   colorScheme: {
