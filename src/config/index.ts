@@ -124,27 +124,6 @@ export const DEFAULT_TEMPLATES: ResumeTemplate[] = [
     }
   },
   {
-    id: "gray-split",
-    name: "灰色左右分栏",
-    description: "左侧灰色信息栏，右侧白色内容区，层次感分明",
-    thumbnail: "graySplit",
-    layout: "gray-split",
-    colorScheme: {
-      primary: "#374151",
-      secondary: "#9ca3af",
-      background: "#ffffff",
-      text: "#111827"
-    },
-    spacing: {
-      sectionGap: 24,
-      itemGap: 16,
-      contentPadding: 32
-    },
-    basic: {
-      layout: "center"
-    }
-  },
-  {
     id: "popular-columns",
     name: "热门经典分栏",
     description: "顶部色带 + 轻量分栏的现代经典布局",
