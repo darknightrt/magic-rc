@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/tooltip";
 
 const LAYOUT_CONFIG = {
-  DEFAULT: [20, 32, 48],
+  DEFAULT: [20, 25, 55],
   SIDE_COLLAPSED: [50, 50],
   EDIT_FOCUSED: [20, 80],
   PREVIEW_FOCUSED: [20, 80],
@@ -187,13 +187,13 @@ export default function Home() {
     } else {
       if (sidePanelCollapsed) {
         newSizes.push(50);
-      } else {
-        if (previewPanelCollapsed) {
-          newSizes.push(80);
         } else {
-          newSizes.push(32);
+          if (previewPanelCollapsed) {
+            newSizes.push(80);
+          } else {
+            newSizes.push(25);
+          }
         }
-      }
     }
 
     // 预览区尺寸
@@ -202,13 +202,13 @@ export default function Home() {
     } else {
       if (editPanelCollapsed && sidePanelCollapsed) {
         newSizes.push(100);
-      } else {
-        if (editPanelCollapsed) {
-          newSizes.push(80);
         } else {
-          newSizes.push(48);
+          if (editPanelCollapsed) {
+            newSizes.push(80);
+          } else {
+            newSizes.push(55);
+          }
         }
-      }
     }
 
     // 确保总和为 100
@@ -272,7 +272,7 @@ export default function Home() {
               <ResizablePanel
                 id="edit-panel"
                 order={2}
-                minSize={32}
+                minSize={25}
                 defaultSize={panelSizes?.[1]}
                 className={cn(
                   "dark:bg-neutral-900 dark:border-r dark:border-neutral-800"
@@ -292,7 +292,7 @@ export default function Home() {
               order={3}
               collapsible={false}
               defaultSize={panelSizes?.[2]}
-              minSize={48}
+              minSize={55}
               className="bg-gray-100"
             >
               <div className="h-full overflow-y-auto">
