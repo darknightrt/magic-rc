@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { AlertCircle, Settings, Layout, Type, Upload, FileEdit, PanelsLeftBottom } from "lucide-react";
+import { AlertCircle, Settings, Layout, Type, Upload, FileEdit, PanelsLeftBottom, Palette } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
@@ -118,7 +118,7 @@ interface EditorHeaderProps {
 }
 
 export function EditorHeader({ isMobile }: EditorHeaderProps) {
-  const { activeResume, setActiveSection, updateResumeTitle } =
+  const { activeResume, setActiveSection, updateResumeTitle, updateGlobalSettings } =
     useResumeStore();
   const { menuSections = [], activeSection } = activeResume || {};
   const themeConfig = getThemeConfig();
@@ -246,6 +246,22 @@ export function EditorHeader({ isMobile }: EditorHeaderProps) {
             >
               <Type className="w-4 h-4" />
               <span className="hidden lg:inline">样式排版</span>
+             </Button>
+
+            {/* 样式模板 */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                setStyleDialogOpen(true);
+                setTemplateSheetOpen(true);
+                updateGlobalSettings({ styleTemplateOverlayVisible: false });
+              }}
+              className="flex items-center gap-2"
+              title="样式模板"
+            >
+              <Palette className="w-4 h-4" />
+              <span className="hidden lg:inline">样式模板</span>
             </Button>
           </div>
 
@@ -348,3 +364,4 @@ export function EditorHeader({ isMobile }: EditorHeaderProps) {
     </motion.header>
   );
 }
+
