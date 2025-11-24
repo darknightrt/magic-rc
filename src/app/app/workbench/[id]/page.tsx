@@ -230,8 +230,8 @@ export default function Home() {
     <main
       className={cn(
         "w-full min-h-screen  overflow-hidden",
-        "bg-white text-gray-900",
-        "dark:bg-neutral-900 dark:text-neutral-200"
+        "bg-white text-gray-800",
+        "dark:bg-neutral-800 dark:text-neutral-200"
       )}
     >
       <EditorHeader />
@@ -243,7 +243,7 @@ export default function Home() {
           className={cn(
             "h-full",
             "border border-gray-200 bg-white",
-            "dark:border-neutral-800 dark:bg-neutral-900/50"
+            "dark:border-neutral-900 dark:bg-neutral-900/50"
           )}
         >
           {/* 侧边栏面板 */}
@@ -275,7 +275,7 @@ export default function Home() {
                 minSize={25}
                 defaultSize={panelSizes?.[1]}
                 className={cn(
-                  "dark:bg-neutral-900 dark:border-r dark:border-neutral-800"
+                  "dark:bg-neutral-800 dark:border-r dark:border-neutral-700"
                 )}
               >
                 <div className="h-full">
