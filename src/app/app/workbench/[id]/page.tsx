@@ -22,10 +22,10 @@ import {
 } from "@/components/ui/tooltip";
 
 const LAYOUT_CONFIG = {
-  DEFAULT: [20, 25, 50],
+  DEFAULT: [20, 25, 55],
   SIDE_COLLAPSED: [50, 50],
-  EDIT_FOCUSED: [20, 80],
-  PREVIEW_FOCUSED: [20, 80],
+  EDIT_FOCUSED: [20, 70],
+  PREVIEW_FOCUSED: [20, 70],
 };
 
 const DragHandle = ({ show = true }) => {
@@ -189,7 +189,7 @@ export default function Home() {
         newSizes.push(50);
         } else {
           if (previewPanelCollapsed) {
-            newSizes.push(80);
+            newSizes.push(70);
           } else {
             newSizes.push(25);
           }
@@ -204,9 +204,9 @@ export default function Home() {
         newSizes.push(100);
         } else {
           if (editPanelCollapsed) {
-            newSizes.push(80);
+            newSizes.push(70);
           } else {
-            newSizes.push(50);
+            newSizes.push(55);
           }
         }
     }
