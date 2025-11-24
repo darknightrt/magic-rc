@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/tooltip";
 
 const LAYOUT_CONFIG = {
-  DEFAULT: [20, 25, 55],
+  DEFAULT: [20, 25, 50],
   SIDE_COLLAPSED: [50, 50],
   EDIT_FOCUSED: [20, 70],
   PREVIEW_FOCUSED: [20, 70],
@@ -206,7 +206,7 @@ export default function Home() {
           if (editPanelCollapsed) {
             newSizes.push(70);
           } else {
-            newSizes.push(55);
+            newSizes.push(50);
           }
         }
     }
@@ -292,7 +292,7 @@ export default function Home() {
               order={3}
               collapsible={false}
               defaultSize={panelSizes?.[2]}
-              minSize={55}
+              minSize={50}
               className="bg-gray-100"
             >
               <div className="h-full overflow-y-auto">
