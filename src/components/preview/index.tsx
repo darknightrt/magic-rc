@@ -249,10 +249,10 @@ const PreviewPanel = ({
         editPanelCollapsed={editPanelCollapsed}
         toggleSidePanel={toggleSidePanel}
         toggleEditPanel={toggleEditPanel}
-        resumeContentRef={resumeContentRef}
       />
     </div>
   );
 };
 
 export default PreviewPanel;
+
