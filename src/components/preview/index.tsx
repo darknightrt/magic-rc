@@ -238,7 +238,7 @@ const PreviewPanel = ({
           </div>
           </div>
           {/* AI诊断面板 - 放在简历模板右边 */}
-          <div className="hidden md:block sticky top-5 mt-5 z-12">
+          <div className="hidden md:block sticky top-7 mt-7 z-14">
             <ResumeDiagnosisPanel />
           </div>
         </div>
@@ -255,5 +255,6 @@ const PreviewPanel = ({
 };
 
 export default PreviewPanel;
+
 
 
