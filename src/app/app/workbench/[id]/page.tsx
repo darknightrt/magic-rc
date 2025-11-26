@@ -190,7 +190,7 @@ export default function Home() {
    if (previewPanelCollapsed) {
     newSizes.push(100); // 编辑面板占满
   } else {
-    newSizes.push(40); // 编辑面板40%，预览60%
+    newSizes.push(35); // 编辑面板40%，预览60%
   }
 } else {
   // 侧边栏展开时
@@ -211,7 +211,7 @@ export default function Home() {
       } else if (editPanelCollapsed) {
         newSizes.push(80);
       } else if (sidePanelCollapsed) {
-        newSizes.push(60); // 当侧边栏收起且编辑面板打开时，预览占60%
+        newSizes.push(50); // 当侧边栏收起且编辑面板打开时，预览占60%
       } else {
         newSizes.push(55);
       }
