@@ -22,10 +22,10 @@ import {
 } from "@/components/ui/tooltip";
 
 const LAYOUT_CONFIG = {
-  DEFAULT: [22, 25, 50],
+  DEFAULT: [20, 25, 55],
   SIDE_COLLAPSED: [50, 50],
-  EDIT_FOCUSED: [20, 70],
-  PREVIEW_FOCUSED: [20, 70],
+  EDIT_FOCUSED: [20, 80],
+  PREVIEW_FOCUSED: [20, 80],
 };
 
 const DragHandle = ({ show = true }) => {
@@ -179,22 +179,28 @@ export default function Home() {
     let newSizes = [];
 
     // 侧边栏尺寸
-    newSizes.push(sidePanelCollapsed ? 0 : 22);
+    newSizes.push(sidePanelCollapsed ? 0 : 20);
 
     // 编辑区尺寸
     if (editPanelCollapsed) {
       newSizes.push(0);
     } else {
       if (sidePanelCollapsed) {
-        newSizes.push(50);
-        } else {
-          if (previewPanelCollapsed) {
-            newSizes.push(70);
-          } else {
-            newSizes.push(25);
-          }
-        }
-    }
+   // 侧边栏收起时
+   if (previewPanelCollapsed) {
+    newSizes.push(100); // 编辑面板占满
+  } else {
+    newSizes.push(40); // 编辑面板40%，预览60%
+  }
+} else {
+  // 侧边栏展开时
+  if (previewPanelCollapsed) {
+    newSizes.push(80);
+  } else {
+    newSizes.push(25);
+  }
+}
+}
 
     // 预览区尺寸
     if (previewPanelCollapsed) {
@@ -202,13 +208,13 @@ export default function Home() {
     } else {
       if (editPanelCollapsed && sidePanelCollapsed) {
         newSizes.push(100);
-        } else {
-          if (editPanelCollapsed) {
-            newSizes.push(70);
-          } else {
-            newSizes.push(50);
-          }
-        }
+      } else if (editPanelCollapsed) {
+        newSizes.push(80);
+      } else if (sidePanelCollapsed) {
+        newSizes.push(60); // 当侧边栏收起且编辑面板打开时，预览占60%
+      } else {
+        newSizes.push(55);
+      }
     }
 
     // 确保总和为 100
@@ -230,8 +236,8 @@ export default function Home() {
     <main
       className={cn(
         "w-full min-h-screen  overflow-hidden",
-        "bg-white text-gray-800",
-        "dark:bg-neutral-800 dark:text-neutral-200"
+        "bg-white text-gray-900",
+        "dark:bg-neutral-900 dark:text-neutral-200"
       )}
     >
       <EditorHeader />
@@ -243,7 +249,7 @@ export default function Home() {
           className={cn(
             "h-full",
             "border border-gray-200 bg-white",
-            "dark:border-neutral-900 dark:bg-neutral-900/50"
+            "dark:border-neutral-800 dark:bg-neutral-900/50"
           )}
         >
           {/* 侧边栏面板 */}
@@ -275,7 +281,7 @@ export default function Home() {
                 minSize={25}
                 defaultSize={panelSizes?.[1]}
                 className={cn(
-                  "dark:bg-neutral-800 dark:border-r dark:border-neutral-700"
+                  "dark:bg-neutral-900 dark:border-r dark:border-neutral-800"
                 )}
               >
                 <div className="h-full">
@@ -292,7 +298,7 @@ export default function Home() {
               order={3}
               collapsible={false}
               defaultSize={panelSizes?.[2]}
-              minSize={50}
+              minSize={55}
               className="bg-gray-100"
             >
               <div className="h-full overflow-y-auto">
